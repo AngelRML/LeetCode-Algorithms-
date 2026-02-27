@@ -1,0 +1,24 @@
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+    int nLeft 		= 0;
+		int nMax 		  = nums.Length - 1;
+		int nCount		= 1;
+		int[] result	= new int[2];
+		
+		while (nLeft < nMax){
+			int nSum = nums[nLeft] + nums[nCount];
+			
+			if (nSum == target){
+				result[0] = nLeft;
+				result[1] = nCount;
+				return result;
+			} else if (nCount < nMax){
+				nCount++;
+			} else {
+				nLeft++;
+				nCount = nLeft + 1;
+			}
+		}
+		return result;
+    }
+}
