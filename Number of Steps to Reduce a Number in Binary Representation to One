@@ -1,0 +1,27 @@
+public class Solution {
+    public int NumSteps(string s) {
+
+        List<int> nums 	= s.Select(c => c - '0').ToList();
+		BigInteger num 	= 0;
+		int count 		= nums.Count;
+        int steps       = 0;
+
+		for (int i = count - 1; i > -1; i--){
+			if (nums[i] > 0){
+				num += (BigInteger)Math.Pow(2,(count-(i+1)));
+			}
+		}
+		
+		while (num != 1){
+			if (num % 2 == 0){
+				num = num/2;
+			}
+			else{
+				num++;	
+			}
+            steps++;
+		}
+		
+        return steps;
+    }
+}
