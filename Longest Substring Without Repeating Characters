@@ -1,0 +1,31 @@
+/*
+Given a string s, find the length of the longest substring without duplicate characters.
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3. Note that "bca" and "cab" are also correct answers.
+*/
+
+public class Solution {
+    public int LengthOfLongestSubstring(string s) {
+        int left 					= 0;
+        int maxLength				= 0;
+		Dictionary<char, int> map 	= new Dictionary<char, int>();
+		
+		for (int right = 0; right < s.Length; right++){
+			char letter = s[right];
+			
+			if (map.ContainsKey(letter) && map[letter] >= left){
+				left = map[letter] + 1;
+			}
+			
+			map[letter] 		= right;
+			int windowLength 	= right - left + 1;
+			if (windowLength > maxLength){
+				maxLength = windowLength;
+			}
+		}
+		
+		return maxLength;
+    }
+}
