@@ -1,0 +1,18 @@
+public class Solution {
+    public int MaxProfit(int[] prices) {
+		int nMax 	= 0;
+		int nMin 	= prices[0];
+			
+		foreach (int price in prices) {
+			if (price < nMin){
+				nMin = price;
+			} else {
+				int profit = price - nMin;
+				if (profit > nMax){
+					nMax = profit;
+				}
+			}
+		}
+		return nMax;
+    }
+}
