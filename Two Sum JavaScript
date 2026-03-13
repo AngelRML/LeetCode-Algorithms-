@@ -1,0 +1,27 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let nAncla      = 0;
+    let nCount      = 1;
+    let nMaxLength  = nums.length - 1;
+    let arrResult   = [];
+
+    while (nAncla < nMaxLength){
+        let nSum = nums[nAncla] + nums[nCount];
+        
+        if (nSum == target){
+            arrResult.push(nAncla);
+            arrResult.push(nCount);
+            break;
+        } else if (nCount < nMaxLength) {
+            nCount++;
+        } else {
+            nAncla++;
+            nCount = nAncla + 1;
+        }
+    }
+    return arrResult;
+};
